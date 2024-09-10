@@ -1,25 +1,22 @@
 #include <stdio.h>
-#include <math.h>
 
 int main() {
-    float base, height, hypotenuse, area, perimeter;
+    // Define constants for the base and height of the triangle
+    const float base = 5.0; // You can change these values as needed
+    const float height = 6.0;
 
-    printf("Enter base of the triangle: ");
-    scanf("%f", &base);
+    // Calculate the area of the triangle
+    float area = (base * height) / 2.0;
 
-    printf("Enter height of the triangle: ");
-    scanf("%f", &height);
+    // Calculate the hypotenuse of the triangle (using Pythagoras' theorem)
+    float hypotenuse = sqrt(base * base + height * height);
 
-    // Calculate hypotenuse using Pythagoras' theorem
-    hypotenuse = sqrt(pow(base, 2) + pow(height, 2));
+    // Calculate the perimeter of the triangle
+    float perimeter = base + height + hypotenuse;
 
-    // Calculate area
-    area = 0.5 * base * height;
-
-    // Calculate perimeter
-    perimeter = base + height + hypotenuse;
-
-    printf("Area of the triangle: %.2f\n", area);
-    printf("Perimeter of the triangle: %.2f\n", perimeter);
+    // Print the results
+    printf("The area of the triangle is: %.2f\n", area);
+    printf("The perimeter of the triangle is: %.2f\n", perimeter);
 
     return 0;
+}
