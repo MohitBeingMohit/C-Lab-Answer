@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+void main() {
+    int a, b, c;
+    char operator;
+
+    printf("Enter the value of a: ");
+    scanf("%d", &a);
+    printf("Enter the operator: ");
+    scanf(" %c", &operator); 
+    printf("Enter the value of b: ");
+    scanf("%d", &b);
+
+    switch (operator) {
+        case '+':
+            printf("The sum is: %d\n", a + b);
+            break;
+        case '-':
+            printf("The difference is: %d\n", a - b);
+            break;
+        case '*':
+            printf("The product is: %d\n", a * b);
+            break;
+        case '/':
+            if (b != 0) {
+                printf("The quotient is: %d\n", a / b);
+            } else {
+                printf("Error: Division by zero\n");
+            }
+            break;
+        case '%':
+            if (b != 0) {
+                printf("The modulo is: %d\n", a % b);
+            } else {
+                printf("Error: Division by zero\n");
+            }
+            break;
+        default:
+            printf("Invalid operator\n");
+    }
+
+
+}
