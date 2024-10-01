@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char city[20];
+    char city_east[] = "Bhubaneshwar", city_west[] = "Mumbai", city_north[] = "Delhi", city_south[] = "Bangalore";
+
+    float Temperature_South = 30.2, Temperature_North = 28, Temperature_East = 29, Temperature_West = 27;
+    float Humidity_East = 40.67, Humidity_North = 50.25, Humidity_South = 45.78, Humidity_West = 60.98;
+    float UV_East = 8, UV_North = 9, UV_South = 9, UV_West = 7;
+
+    printf("Which City are You Living in? \n");
+    scanf("%s", city);
+
+    if (strcmp(city, city_east) == 0 || strcmp(city, city_west) == 0 || strcmp(city, city_north) == 0 || strcmp(city, city_south) == 0) {
+        if (strcmp(city, city_east) == 0) {
+            printf("As you are currently located in the city of %s\n", city);
+            printf("The Temperature is: %.2f\n", Temperature_East);
+            printf("The Humidity Level is: %.2f\n", Humidity_East);
+            printf("The UV is measured to: %.2f\n", UV_East);
+        } else if (strcmp(city, city_west) == 0) {
+            printf("As you are currently located in the city of %s\n", city);
+            printf("The Temperature is: %.2f\n", Temperature_West);
+            printf("The Humidity Level is: %.2f\n", Humidity_West);
+            printf("The UV is measured to: %.2f\n", UV_West);
+        } else if (strcmp(city, city_north) == 0) {
+            printf("As you are currently located in the city of %s\n", city);
+            printf("The Temperature is: %.2f\n", Temperature_North);
+            printf("The Humidity Level is: %.2f\n", Humidity_North);
+            printf("The UV is measured to: %.2f\n", UV_North);
+        } else if (strcmp(city, city_south) == 0) {
+            printf("As you are currently located in the city of %s\n", city);
+            printf("The Temperature is: %.2f\n", Temperature_South);
+            printf("The Humidity Level is: %.2f\n", Humidity_South);
+            printf("The UV is measured to: %.2f\n", UV_South);
+        }
+    } else {
+        printf("The City doesn't exist\n");
+    }
+
+    return 0;
+}
