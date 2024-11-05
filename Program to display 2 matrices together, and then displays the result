@@ -1,0 +1,56 @@
+#include <stdio.h>
+#define MAX_SIZE 4 
+int main(){
+    int size; 
+    int firstMatrix[MAX_SIZE][MAX_SIZE]; 
+    int secondMatrix[MAX_SIZE][MAX_SIZE]; 
+    int sumMatrix[MAX_SIZE][MAX_SIZE]; 
+    printf("Input the size of the square matrix (less than 5): ");
+    scanf("%d", &size);
+    if (size < 1 || size >= 5) {
+        printf("Invalid size! Please enter a number less than 5.\n");
+        return 1;
+    }
+    printf("Input elements in the first matrix:\n");
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            printf("element - [%d],[%d] : ", i, j);
+            scanf("%d", &firstMatrix[i][j]);
+        }
+    }
+    printf("Input elements in the second matrix:\n");
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            printf("element - [%d],[%d] : ", i, j);
+            scanf("%d", &secondMatrix[i][j]);
+        }
+    }
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            sumMatrix[i][j] = firstMatrix[i][j] + secondMatrix[i][j];
+        }
+    }
+    printf("\nThe First matrix is:\n");
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            printf("%d ", firstMatrix[i][j]);
+        }
+        printf("\n"); 
+    }
+    printf("\nThe Second matrix is:\n");
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            printf("%d ", secondMatrix[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\nThe Addition of two matrices is:\n");
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            printf("%d ", sumMatrix[i][j]);
+        }
+        printf("\n"); 
+    }
+
+    return 0; 
+}
