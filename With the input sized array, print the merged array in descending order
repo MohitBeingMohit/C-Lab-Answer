@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+#define MAX_SIZE 100
+
+void mergeAndSortDescending(int arr1[], int arr2[], int merged[], int size){
+    for (int i = 0; i < size; i++){
+        merged[i] = arr1[i];
+        merged[i + size] = arr2[i];
+    }
+    for (int i = 0; i < 2 * size - 1; i++){
+        for (int j = 0; j < 2 * size - i - 1; j++){
+            if (merged[j] < merged[j + 1]){
+                int temp = merged[j];
+                merged[j] = merged[j + 1];
+                merged[j + 1] = temp;
+            }
+        }
+    }
+}
+int main(){
+    int size;
+    printf("Input the size of the arrays: ");
+    scanf("%d", &size);
+    if (size <= 0 || size > MAX_SIZE) {
+        printf("Invalid size! Please enter a number between 1 and %d.\n", MAX_SIZE);
+        return 1; 
+    }
+    int arr1[MAX_SIZE], arr2[MAX_SIZE], merged[2 * MAX_SIZE];
+    printf("Input elements in the first array:\n");
+    for (int i = 0; i < size; i++) {
+        printf("element - [%d] : ", i);
+        scanf("%d", &arr1[i]);
+    }
+    printf("Input elements in the second array:\n");
+    for (int i = 0; i < size; i++) {
+        printf("element - [%d] : ", i);
+        scanf("%d", &arr2[i]);
+    }
+    mergeAndSortDescending(arr1, arr2, merged, size);
+    printf("\nThe merged array sorted in descending order is:\n");
+    for (int i = 0; i < 2 * size; i++) {
+        printf("%d ", merged[i]);
+    }
+    printf("\n");
+    return 0; 
+}
