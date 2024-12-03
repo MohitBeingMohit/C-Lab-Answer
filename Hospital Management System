@@ -1,0 +1,203 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+typedef struct{
+    int id;
+    char name[100];
+    int age;
+    char gender[10];
+    char disease[100];
+} Patient;
+typedef struct{
+    int id;
+    char name[100];
+    char specialty[100];
+    int experience;
+} Doctor;
+typedef struct{
+    int id;
+    int patientId;
+    int doctorId;
+    char date[20];
+} Appointment;
+void mainMenu();
+void patientManagement();
+void doctorManagement();
+void appointmentScheduling();
+void addPatient();
+void viewPatients();
+void addDoctor();
+void viewDoctors();
+void scheduleAppointment();
+void viewAppointments();
+
+Patient patients[100];
+Doctor doctors[50];
+Appointment appointments[100];
+int patientCount = 0;
+int doctorCount = 0;
+int appointmentCount = 0;
+
+int main(){
+    mainMenu();
+    return 0;
+}
+void mainMenu(){
+    int choice;
+    while (1) {
+        printf("\nHospital Management System\n");
+        printf("1. Patient Management\n");
+        printf("2. Doctor Management\n");
+        printf("3. Appointment Scheduling\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        switch (choice){
+            case 1:
+                patientManagement();
+                break;
+            case 2:
+                doctorManagement();
+                break;
+            case 3:
+                appointmentScheduling();
+                break;
+            case 4:
+                exit(0);
+            default:
+                printf("Invalid choice! Please try again.\n");
+        }
+    }
+}
+void patientManagement(){
+    int choice;
+    while (1) {
+        printf("\nPatient Management\n");
+        printf("1. Add Patient\n");
+        printf("2. View Patients\n");
+        printf("3. Back to Main Menu\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        switch (choice) {
+            case 1:
+                addPatient();
+                break;
+            case 2:
+                viewPatients();
+                break;
+            case 3:
+                return;
+            default:
+                printf("Invalid choice! Please try again.\n");
+        }
+    }
+}
+void addPatient(){
+    Patient p;
+    p.id = patientCount + 1;
+    printf("Enter patient name: ");
+    scanf("%s", p.name);
+    printf("Enter patient age: ");
+    scanf("%d", &p.age);
+    printf("Enter patient gender: ");
+    scanf("%s", p.gender);
+    printf("Enter patient disease: ");
+    scanf("%s", p.disease);
+    patients[patientCount++] = p;
+    printf("Patient added successfully!\n");
+}
+void viewPatients(){
+    for (int i = 0; i < patientCount; i++) {
+        printf("\nPatient ID: %d\n", patients[i].id);
+        printf("Name: %s\n", patients[i].name);
+        printf("Age: %d\n", patients[i].age);
+        printf("Gender: %s\n", patients[i].gender);
+        printf("Disease: %s\n", patients[i].disease);
+    }
+}
+void doctorManagement(){
+    int choice;
+    while (1) {
+        printf("\nDoctor Management\n");
+        printf("1. Add Doctor\n");
+        printf("2. View Doctors\n");
+        printf("3. Back to Main Menu\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        switch (choice) {
+            case 1:
+                addDoctor();
+                break;
+            case 2:
+                viewDoctors();
+                break;
+            case 3:
+                return;
+            default:
+                printf("Invalid choice! Please try again.\n");
+        }
+    }
+}
+void addDoctor(){
+    Doctor d;
+    d.id = doctorCount + 1;
+    printf("Enter doctor name: ");
+    scanf("%s", d.name);
+    printf("Enter doctor specialty: ");
+    scanf("%s", d.specialty);
+    printf("Enter doctor experience (years): ");
+    scanf("%d", &d.experience);
+    doctors[doctorCount++] = d;
+    printf("Doctor added successfully!\n");
+}
+void viewDoctors(){
+    for (int i = 0; i < doctorCount; i++) {
+        printf("\nDoctor ID: %d\n", doctors[i].id);
+        printf("Name: %s\n", doctors[i].name);
+        printf("Specialty: %s\n", doctors[i].specialty);
+        printf("Experience: %d years\n", doctors[i].experience);
+    }
+}
+void appointmentScheduling(){
+    int choice;
+    while (1) {
+        printf("\nAppointment Scheduling\n");
+        printf("1. Schedule Appointment\n");
+        printf("2. View Appointments\n");
+        printf("3. Back to Main Menu\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        switch (choice){
+            case 1:
+                scheduleAppointment();
+                break;
+            case 2:
+                viewAppointments();
+                break;
+            case 3:
+                return;
+            default:
+                printf("Invalid choice! Please try again.\n");
+        }
+    }
+}
+void scheduleAppointment(){
+    Appointment a;
+    a.id = appointmentCount + 1;
+    printf("Enter patient ID: ");
+    scanf("%d", &a.patientId);
+    printf("Enter doctor ID: ");
+    scanf("%d", &a.doctorId);
+    printf("Enter appointment date (dd-mm-yyyy): ");
+    scanf("%s", a.date);
+    appointments[appointmentCount++] = a;
+    printf("Appointment scheduled successfully!\n");
+}
+void viewAppointments(){
+    for (int i = 0; i < appointmentCount; i++) {
+        printf("\nAppointment ID: %d\n", appointments[i].id);
+        printf("Patient ID: %d\n", appointments[i].patientId);
+        printf("Doctor ID: %d\n", appointments[i].doctorId);
+        printf("Date: %s\n", appointments[i].date);
+    }
+}
